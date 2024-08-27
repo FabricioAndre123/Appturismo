@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        google()               // Repositorio de Google para las herramientas de Android
+        mavenCentral()         // Repositorio de Maven Central para otras dependencias
+        gradlePluginPortal()   // Repositorio para plugins de Gradle
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)  // Preferir repositorios en settings.gradle
+    repositories {
+        google()               // Repositorio de Google
+        mavenCentral()         // Repositorio de Maven Central
+    }
+}
+
+rootProject.name = "TourismApp"
+include ':app'
