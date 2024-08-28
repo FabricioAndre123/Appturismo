@@ -12,10 +12,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.google.firebase.auth.FirebaseAuth
 import com.jagoteori.tourismapp.ui.navigation.Screen
 import com.jagoteori.tourismapp.ui.screen.about_me.AboutMeScreen
 import com.jagoteori.tourismapp.ui.screen.detail.DetailScreen
 import com.jagoteori.tourismapp.ui.screen.home.HomeScreen
+import com.jagoteori.tourismapp.ui.screen.login.LoginScreen
+import com.jagoteori.tourismapp.ui.screen.login.RegisterScreen
 
 @Composable
 fun TourismApp(
@@ -25,12 +28,40 @@ fun TourismApp(
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
+
+    val startDestination = if (auth.currentUser != null) {
+        Screen.Home.route
+    } else {
+        Screen.Login.route
+    }
+
     Scaffold(scaffoldState = scaffoldState) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Home.route,
+            startDestination = startDestination,
             modifier = modifier.padding(paddingValues)
         ) {
+            composable(Screen.Login.route) {
+                LoginScreen(
+                    navController = navController,
+                    onLoginSuccess = {
+                        navController.navigate(Screen.Home.route) {
+                            popUpTo(Screen.Login.route) { inclusive = true }
+                        }
+                    }
+                )
+            }
+            composable(Screen.Register.route) {
+                RegisterScreen(
+                    navController = navController,
+                    onRegisterSuccess = {
+                        navController.navigate(Screen.Home.route) {
+                            popUpTo(Screen.Register.route) { inclusive = true }
+                        }
+                    }
+                )
+            }
             composable(Screen.Home.route) {
                 HomeScreen(
                     navigateToDetail = { id ->
@@ -38,6 +69,12 @@ fun TourismApp(
                     },
                     navigateToAboutMe = {
                         navController.navigate(Screen.AboutMe.route)
+                    },
+                    onLogout = {
+                        auth.signOut()
+                        navController.navigate(Screen.Login.route) {
+                            popUpTo(Screen.Home.route) { inclusive = true }
+                        }
                     }
                 )
             }

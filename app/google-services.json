@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "975056484659",
+    "project_id": "ecuaexplorer-a424e",
+    "storage_bucket": "ecuaexplorer-a424e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975056484659:android:08317698e80ea1a5f4a646",
+        "android_client_info": {
+          "package_name": "com.jagoteori.tourismapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIjoowkLi7SF3pnJu4FM3LLEh6XplRsso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

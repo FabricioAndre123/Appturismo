@@ -26,13 +26,13 @@ class TourismRepositoryImpl : TourismRepository {
             val index = tourismList.indexOfFirst { it.id == id }
             if (tourismList[index].isFavorite) {
                 _tourismList[index] = tourismList[index].copy(isFavorite = false)
-                "Berhasil dihapus dari favorit"
+                "Sitio quitado de favoritos"
             } else {
                 _tourismList[index] = tourismList[index].copy(isFavorite = true)
-                "Berhasil ditambahkan ke favorit"
+                "Sitio Agregado a favoritos"
             }
         } catch (e: Exception) {
-            "Gagal menambahkan ke favorit"
+            ""
         }
     }
 

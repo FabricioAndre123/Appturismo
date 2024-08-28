@@ -1,14 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services' // Añade esta línea
 }
 
 android {
-    compileSdk 33  // Actualiza a la versión necesaria
+    compileSdk 34  // Actualiza a la versión necesaria
 
     defaultConfig {
         applicationId "com.jagoteori.tourismapp"
-        minSdk 21
+        minSdk 23
         targetSdk 33  // Actualiza a la versión necesaria
         versionCode 1
         versionName "1.0"
@@ -64,4 +65,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
+
+    // Añade los servicios Firebase que utilizarás, por ejemplo:
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 }
