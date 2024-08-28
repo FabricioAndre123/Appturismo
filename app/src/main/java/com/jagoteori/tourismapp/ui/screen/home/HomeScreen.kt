@@ -57,7 +57,7 @@ fun HomeScreen(
     val auth = FirebaseAuth.getInstance()
     val db = FirebaseFirestore.getInstance()
     val currentUser = auth.currentUser
-    val currentDate = Timestamp.now()   
+    val currentDate = Timestamp.now()
 
     DisposableEffect(Unit) {
         onDispose {
